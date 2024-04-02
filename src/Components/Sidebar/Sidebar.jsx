@@ -72,29 +72,29 @@ export default function Sidebar({ isSidebarToggled }) {
                             </div>
                         </nav>
                     </div>
-                    <div className="sb-sidenav-menu-heading"> <i class="fa-solid fa-graduation-cap"></i> My activity </div>
+                    <div className="sb-sidenav-menu-heading"> <i className="fa-solid fa-graduation-cap"></i> My activity </div>
                     <Link className="nav-link" to="/upldnotes">
-                        <div className="sb-nav-link-icon"><i class="fa-solid fa-book-open"></i></div>
+                        <div className="sb-nav-link-icon"><i className="fa-solid fa-book-open"></i></div>
                         Books
                     </Link>
                     <Link className="nav-link" to="/home">
-                        <div className="sb-nav-link-icon"><i class="fa-solid fa-layer-group"></i></div>
+                        <div className="sb-nav-link-icon"><i className="fa-solid fa-layer-group"></i></div>
                         Course
                     </Link>
                     <Link className="nav-link" to="/upldvideo">
-                        <div className="sb-nav-link-icon"><i class="fa-solid fa-video"></i></div>
+                        <div className="sb-nav-link-icon"><i className="fa-solid fa-video"></i></div>
                         Videos
                     </Link>
                     <a className="nav-link" href="#">
-                        <div className="sb-nav-link-icon"><i class="fa-solid fa-book-open-reader"></i></div>
+                        <div className="sb-nav-link-icon"><i className="fa-solid fa-book-open-reader"></i></div>
                         Assignment
                     </a>
                     <a className="nav-link" href="#">
-                        <div className="sb-nav-link-icon"><i class="fa-solid fa-brain"></i></div>
+                        <div className="sb-nav-link-icon"><i className="fa-solid fa-brain"></i></div>
                        Quiz Assignment
                     </a>
                     <a className="nav-link" href="#">
-                        <div className="sb-nav-link-icon"><i class="fa-solid fa-question"></i></div>
+                        <div className="sb-nav-link-icon"><i className="fa-solid fa-question"></i></div>
                        Question
                     </a>
                     <a className="nav-link" href="#">
