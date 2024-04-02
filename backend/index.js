@@ -27,6 +27,10 @@ app.use('/api/admin',require('./routers/admin'))
 //Teacher api
 app.use('/api/teacher',require('./routers/teacher'))
 
+//Notes api
+app.use('/api/notes',require('./routers/notes'))
+app.use("/files", express.static("files"));
+
 
 app.listen(port,()=>{
     console.log(`E-Learning backend at : http://localhost:${port}`)
