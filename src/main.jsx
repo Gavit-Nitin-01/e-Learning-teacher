@@ -20,9 +20,10 @@ import AdminT from './Components/Tables/AdminT.jsx';
 import StudentT from './Components/Tables/StudentT.jsx';
 import TeacherT from './Components/Tables/TeacherT.jsx';
 import Uploadvideo from './Components/MyActivity/Uploadvideo/Uploadvideo.jsx';
-import Uploadnotes from './Components/MyActivity/Uploadnotes/Uploadnotes.jsx';
+// import Uploadnotes from './Components/MyActivity/Uploadnotes/Uploadnotes.jsx';
 import Registration from './Components/Registration/Registration.jsx';
 import ForgotPass from './Components/ForgotPass/ForgotPass.jsx';
+import Books from './Components/Books/Books.jsx';
 
 
 const router = createBrowserRouter(
@@ -37,7 +38,9 @@ const router = createBrowserRouter(
         <Route path='/studentt' element={<StudentT />} />
         <Route path='/teachert' element={<TeacherT />} />
         <Route path='/upldvideo' element={<Uploadvideo />} />
-        <Route path='/upldnotes' element={<Uploadnotes />} />
+        {/* <Route path='/upldnotes' element={<Uploadnotes />} /> */}
+        <Route path='/upldnotes' element={<Books />} />
+
       </Route>
       <Route path='*' element={<Error />}></Route>
     </>
