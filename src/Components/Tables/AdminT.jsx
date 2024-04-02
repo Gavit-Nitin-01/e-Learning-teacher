@@ -1,12 +1,8 @@
 
 import { Link } from 'react-router-dom'
-import React, { useContext, useEffect } from 'react';
-import adminContext from '../../context/adminContext';
 import TableData from './TableData';
 
 export default function AdminT() {
-    const context = useContext(adminContext);
-    const { adminData } = context;
 
 
 
@@ -40,11 +36,11 @@ export default function AdminT() {
                                 </tr>
                             </thead>
                             <tbody>
-                                {
+                                {/* {
                                     adminData.map((data, id) => {
                                         return <TableData key={id} data={data} />
                                     })
-                                }
+                                } */}
                             </tbody>
                         </table>
 

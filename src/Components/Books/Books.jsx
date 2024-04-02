@@ -9,6 +9,7 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
 ).toString();
 
 export default function Books() {
+
     const [title, setTitle] = useState("");
     const [file, setFile] = useState("");
     const [image, setImage] = useState("");
@@ -53,6 +54,7 @@ export default function Books() {
                 headers: {
                     "Content-Type": "multipart/form-data",
                     "Access-Control-Allow-Origin": "*",
+                    "auth-token": localStorage.getItem('token')
                 },
             });
         if (!result) {
