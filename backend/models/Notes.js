@@ -4,6 +4,10 @@ const { default: mongoose } = require("mongoose");
 const { Schema } = mongoose;
 
 const NotesSchema = new Schema({
+    teacher:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'teacher'
+    },
     title: {
         type: String,
         required: true

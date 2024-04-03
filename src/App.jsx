@@ -6,6 +6,7 @@ import Footer from './Components/Footer/Footer.jsx'
 import Header from './Components/Header/Header'
 import Sidebar from './Components/Sidebar/Sidebar.jsx'
 import { Outlet } from 'react-router-dom';
+import TeacherState from './context/TeacherState.jsx';
 
 
 
@@ -17,6 +18,8 @@ function App() {
   };
   return (
     <>
+      <TeacherState>
+
         <div className="sb-nav-fixed">
           <Header onSidebarToggle={handleSidebarToggle} />
           <div id="layoutSidenav">
@@ -31,6 +34,7 @@ function App() {
             </div>
           </div>
         </div>
+      </TeacherState>
     </>
   )
 }

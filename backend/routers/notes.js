@@ -30,7 +30,6 @@ router.post('/addnotes', upload.single("file"), async (req, res) => {
     const filename = req.file.filename;
     const image = req.body.image;
     const description = req.body.description;
-
     try {
         const data = await Notes.create({ title: title, pdf: filename,image:image,description:description })
         res.send({status:"ok", data})
@@ -43,6 +42,23 @@ router.post('/addnotes', upload.single("file"), async (req, res) => {
 });
 
 
+// ROUTE 2: Get all Notes : GET "/api/notes/getnotes".  login requird
+router.get('/fetchnotes', async (req, res) => {
+    let success = false;
+    try {
+        let notes = await Notes.find();
+        if (Notes) {
+            success = true;
+            res.json(notes)
+        } else {
+            res.json('data not found')
+        }
 
+    } catch (error) {
+        console.log(error.message)
+        res.status(500).send("Internal server error")
+    }
+
+})
 
 module.exports = router

@@ -57,7 +57,7 @@ export default function Login() {
                                 <form onSubmit={handleSubmit}>
                                     <div className="form-floating mb-3">
                                         <input className="form-control" value={credentials.email} onChange={onChange} id="email" type="email" name='email' placeholder="name@example.com" />
-                                        <label htmlFor="inputEmail">Email address</label>
+                                        <label>Email address</label>
                                     </div>
                                     <div className="form-floating mb-3">
                                         <input className="form-control" id="password" value={credentials.password} onChange={onChange} type="password" name='password' placeholder="Password" />
