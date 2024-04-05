@@ -22,8 +22,8 @@ export default function Sidebar({ isSidebarToggled }) {
                     </Link>
                     
                     <a className="nav-link collapsed" href="" data-bs-toggle="collapse" data-bs-target="#collapseLayouts1" aria-expanded="false" aria-controls="collapseLayouts">
-                        <div className="sb-nav-link-icon"><i className="fa-solid fa-user"></i></div>
-                        Accounts
+                        <div className="sb-nav-link-icon"><i class="fa-solid fa-table"></i></div>
+                        Data List
                         <div className="sb-sidenav-collapse-arrow"><i className="fas fa-angle-down"></i></div>
                     </a>
                     <div className="collapse" id="collapseLayouts1" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
@@ -33,18 +33,7 @@ export default function Sidebar({ isSidebarToggled }) {
                             <Link className="nav-link" to="/studentt">Playlist</Link>
                         </nav>
                     </div>
-                    <a className="nav-link collapsed" href="" data-bs-toggle="collapse" data-bs-target="#collapseLayouts2" aria-expanded="false" aria-controls="collapseLayouts">
-                        <div className="sb-nav-link-icon"><i className="fa-solid fa-user"></i></div>
-                        Accounts
-                        <div className="sb-sidenav-collapse-arrow"><i className="fas fa-angle-down"></i></div>
-                    </a>
-                    <div className="collapse" id="collapseLayouts2" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                        <nav className="sb-sidenav-menu-nested nav">
-                            <Link className="nav-link" to="/admint">Admin</Link>
-                            <Link className="nav-link" to="/teachert">Teacher's</Link>
-                            <Link className="nav-link" to="/studentt">Students</Link>
-                        </nav>
-                    </div>
+                    
                   
                     <div className="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                         <nav className="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
