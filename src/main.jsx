@@ -21,6 +21,7 @@ import Registration from './Components/Registration/Registration.jsx';
 import ForgotPass from './Components/ForgotPass/ForgotPass.jsx';
 import Uploadnotes from './Components/MyActivity/Uploadnotes/Uploadnotes.jsx'
 import NotesT from './Components/TableData/NotesT.jsx';
+import Addcourse from './Components/MyActivity/course/Addcourse/Addcourse.jsx';
 
 
 const router = createBrowserRouter(
@@ -34,6 +35,8 @@ const router = createBrowserRouter(
         <Route path='/upldvideo' element={<Uploadvideo />} />
         <Route path='/upldnotes' element={<Uploadnotes />} />
         <Route path='/noteslist' element={<NotesT/>}/>
+        <Route path='/addcourse' element={<Addcourse/>}/>
+
 
       </Route>
       <Route path='*' element={<Error />}></Route>
