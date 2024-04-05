@@ -77,10 +77,20 @@ export default function Sidebar({ isSidebarToggled }) {
                         <div className="sb-nav-link-icon"><i className="fa-solid fa-book-open"></i></div>
                         Books
                     </Link>
-                    <Link className="nav-link" to="/home">
+
+                    <a className="nav-link collapsed" href="" data-bs-toggle="collapse" data-bs-target="#collapseLayouts3" aria-expanded="false" aria-controls="collapseLayouts">
                         <div className="sb-nav-link-icon"><i className="fa-solid fa-layer-group"></i></div>
-                        Course
-                    </Link>
+                       Course
+                        <div className="sb-sidenav-collapse-arrow"><i className="fas fa-angle-down"></i></div>
+                    </a>
+                    <div className="collapse" id="collapseLayouts3" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                        <nav className="sb-sidenav-menu-nested nav">
+                            <Link className="nav-link" to="/addcourse">Add course</Link>
+                            <Link className="nav-link" to="/addcourse">Teacher's</Link>
+                            
+                        </nav>
+                    </div>
+
                     <Link className="nav-link" to="/upldvideo">
                         <div className="sb-nav-link-icon"><i className="fa-solid fa-video"></i></div>
                         Videos
