@@ -22,7 +22,7 @@ export default function Sidebar({ isSidebarToggled }) {
                     </Link>
                     
                     <a className="nav-link collapsed" href="" data-bs-toggle="collapse" data-bs-target="#collapseLayouts1" aria-expanded="false" aria-controls="collapseLayouts">
-                        <div className="sb-nav-link-icon"><i class="fa-solid fa-table"></i></div>
+                        <div className="sb-nav-link-icon"><i className="fa-solid fa-table"></i></div>
                         Data List
                         <div className="sb-sidenav-collapse-arrow"><i className="fas fa-angle-down"></i></div>
                     </a>

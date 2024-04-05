@@ -1,5 +1,4 @@
 import React, { useContext, useState } from 'react'
-
 import teacherContext from '../../../context/teacherContext';
 import "./notes.css";
 

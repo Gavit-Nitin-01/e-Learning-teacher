@@ -12,7 +12,9 @@ const fetchteacher = (req, res, next) => {
 
     try {
         const data = jwt.verify(token, JWT_SECRET);
-        req.teacher = data.teacher;
+        req.data = data._id;
+        req.teacher = data;
+        // console.log(data)
         next()
     } catch (error) {
         res.status(401).send({ error: "please authenticate using a valid token" })

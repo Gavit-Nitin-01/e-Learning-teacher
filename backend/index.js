@@ -32,6 +32,10 @@ app.use('/api/notes',require('./routers/notes'))
 app.use("/files", express.static("files"));
 
 
+//Course api
+app.use('/api/course',require('./routers/course'))
+
+
 app.listen(port,()=>{
     console.log(`E-Learning backend at : http://localhost:${port}`)
 })

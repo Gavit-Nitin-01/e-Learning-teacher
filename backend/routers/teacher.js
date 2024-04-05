@@ -4,6 +4,7 @@ const { validationResult, body } = require("express-validator");
 const router = express.Router();
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const fetchteacher = require("../middleware/fetchteacher");
 
 const JWT_SECRET = 'ELEARNING';
 
@@ -37,8 +38,8 @@ router.post('/createteacher', [
 
         //secret password
         const saltkey = await bcrypt.genSalt(10);
-        secPass = await bcrypt.hash(req.body.password , saltkey)
-      
+        secPass = await bcrypt.hash(req.body.password, saltkey)
+
         //create new student
         data = await Teacher.create({
             name: req.body.name,
@@ -47,7 +48,7 @@ router.post('/createteacher', [
             password: secPass
         })
 
-       
+
 
         success = true;
         res.json({ success, data })
@@ -58,18 +59,28 @@ router.post('/createteacher', [
 })
 
 
+const createtoken = async (id) => {
+    try {
+        const token = await jwt.sign({ _id: id }, JWT_SECRET);
+        return token;
+
+    } catch (error) {
+        return res.status(400).json({ error: "something wrrong" });
+    }
+
+}
 
 // ROUTE 2: Atuthnticate a teacher using : POST "/api/teacher/login". No login requird
 router.post('/login', [
-    body('email', 'Enter valid Email-Id').isEmail(),
-    body('password', 'Enter valid password').isLength({ min: 5 }),
+    body('email', 'Enter valid email').isEmail(),
+    body('password', 'Password cannot be blank').exists(),
 ], async (req, res) => {
-    let success = false;
 
-    //If there are errors, return bad request and the errors
+    let success = false;
+    //If there are errors, rrturn bad reques and the errors 
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-        return res.status(400).json({ success, errors: errors.array() })
+        return res.status(400).json({ errors: errors.array() })
     }
 
     const { email, password } = req.body;
@@ -77,27 +88,43 @@ router.post('/login', [
         let teacher = await Teacher.findOne({ email });
         if (!teacher) {
             success = false;
-            return res.status(400).json({ success, error: "plase try to login correct credentials" })
+            return res.status(400).json({ error: "plase try to login correct credentials" })
         }
-        //compare to password 
+
         const passCompare = await bcrypt.compare(password, teacher.password)
         if (!passCompare) {
             success = false;
-            return res.status(400).json({ success, error: "plase try to correct credentials" })
-        }
-   
-
-        const data = {
-            teacher: {
-                id: teacher.id
+            return res.json({ success, error: "plase try to login correct credentials" })
+        } else {
+            success = true;
+            const tokenData = await createtoken(teacher._id);
+            const teacherResult = {
+                _id: teacher._id,
+                name: teacher.name,
+                phone: teacher.phone,
+                email: teacher.email,
+                password: teacher.password,
+                token: tokenData
             }
+            return res.json({success,teacherResult})
         }
+       
+    } catch (error) {
+        console.log(error.message)
+        res.status(500).send("Internal server error")
+    }
 
-        const authtoken = jwt.sign(data, JWT_SECRET);
-        console.log(authtoken)
+});
 
-        success = true;
-        res.json({ success, authtoken })
+
+// ROUTE 3: Get all teacher Data : POST "/api/admin/getteacher".  login requird
+router.post('/getteacher',fetchteacher, async (req, res) => {
+
+    try {
+        teacherD = req.data;
+        const admin = await Teacher.findById(teacherD).select("-password")
+        res.send(admin)
+        console.log(admin)
 
     } catch (error) {
         console.log(error.message)
