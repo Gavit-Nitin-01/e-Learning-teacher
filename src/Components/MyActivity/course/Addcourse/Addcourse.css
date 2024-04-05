@@ -1,0 +1,14 @@
+
+
+.heading {
+    margin: 20px;
+    text-align: center;
+    color: rgb(10, 10, 148);
+}
+
+.Addcourses {
+    width: 50%;
+    margin-left: 25%;
+    padding: 10px;
+    border: 1px solid;
+}
