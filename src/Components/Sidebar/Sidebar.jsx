@@ -28,7 +28,7 @@ export default function Sidebar({ isSidebarToggled }) {
                     </a>
                     <div className="collapse" id="collapseLayouts1" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                         <nav className="sb-sidenav-menu-nested nav">
-                            <Link className="nav-link" to="/admint">Notes</Link>
+                            <Link className="nav-link" to="/noteslist">Notes</Link>
                             <Link className="nav-link" to="/teachert">Course</Link>
                             <Link className="nav-link" to="/studentt">Playlist</Link>
                         </nav>
