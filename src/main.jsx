@@ -19,7 +19,8 @@ import Error from './Components/Error/Error.jsx';
 import Uploadvideo from './Components/MyActivity/Uploadvideo/Uploadvideo.jsx';
 import Registration from './Components/Registration/Registration.jsx';
 import ForgotPass from './Components/ForgotPass/ForgotPass.jsx';
-import Uploadnotes from './Components/Uploadnotes/Uploadnotes.jsx'
+import Uploadnotes from './Components/MyActivity/Uploadnotes/Uploadnotes.jsx'
+import NotesT from './Components/TableData/NotesT.jsx';
 
 
 const router = createBrowserRouter(
@@ -31,7 +32,8 @@ const router = createBrowserRouter(
       <Route path="/" element={<App />}>
         <Route path='/home' element={<Home />} />
         <Route path='/upldvideo' element={<Uploadvideo />} />
-        <Route path='/upldnotes' element={<Uploadnotes/>} />
+        <Route path='/upldnotes' element={<Uploadnotes />} />
+        <Route path='/noteslist' element={<NotesT/>}/>
 
       </Route>
       <Route path='*' element={<Error />}></Route>

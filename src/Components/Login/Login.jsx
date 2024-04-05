@@ -1,14 +1,14 @@
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import {  toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 
 export default function Login() {
-
-
+    
+    
     const [credentials, setCredentials] = useState({ email: "", password: "" })
     let navigate = useNavigate();
-
+    
     const handleSubmit = async (e) => {
         e.preventDefault();
         const response = await fetch("http://localhost:4000/api/teacher/login", {
@@ -17,9 +17,9 @@ export default function Login() {
             body: JSON.stringify({ email: credentials.email, password: credentials.password })
         });
         const json = await response.json();
-        console.log(json)
         if (json.success) {
-            localStorage.setItem('token', json.authtoken)
+            localStorage.setItem('token', json.teacherResult.token)
+            localStorage.setItem('_id',json.teacherResult._id);
             toast.success('Welcome Teacher', {
                 position: "top-right",
                 autoClose: 3000,
@@ -31,7 +31,6 @@ export default function Login() {
             });
             navigate('/home');
         } else {
-            // alert('invalid details');
             toast.error('Invalid Details', {
                 position: "top-right",
                 autoClose: 3000,
@@ -40,6 +39,7 @@ export default function Login() {
                 theme: "colored",
             });
         }
+
     }
 
     const onChange = (e) => {

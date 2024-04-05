@@ -30,6 +30,7 @@ router.post('/addnotes', upload.single("file"), async (req, res) => {
     const filename = req.file.filename;
     const image = req.body.image;
     const description = req.body.description;
+
     try {
         const data = await Notes.create({ title: title, pdf: filename,image:image,description:description })
         res.send({status:"ok", data})
