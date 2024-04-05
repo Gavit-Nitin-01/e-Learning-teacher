@@ -1,25 +1,23 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import './Card.css'
+import teacherContext from '../../../context/teacherContext'
+import { Link } from 'react-router-dom';
 export default function Card() {
+    const context = useContext(teacherContext)
+    const {totalNotes} = context;
     return (
         <>
             <div className="ag-format-container">
                 <div className="ag-courses_box">
                     <div className="ag-courses_item">
-                        <a href="#" className="ag-courses-item_link">
+                        <Link to="/noteslist" className="ag-courses-item_link">
                             <div className="ag-courses-item_bg"></div>
 
                             <div className="ag-courses-item_title">
-                                UI/Web&amp;Graph design for teenagers 11-17&#160;years old
+                                Total Notes Uploaded  👉  {totalNotes}
                             </div>
-
-                            <div className="ag-courses-item_date-box">
-                                Start:
-                                <span className="ag-courses-item_date">
-                                    04.11.2022
-                                </span>
-                            </div>
-                        </a>
+                            
+                        </Link>
                     </div>
 
                     <div className="ag-courses_item">
