@@ -29,7 +29,7 @@ app.use('/api/teacher',require('./routers/teacher'))
 
 //Notes api
 app.use('/api/notes',require('./routers/notes'))
-app.use("/files", express.static("files"));
+app.use("/Notes-file", express.static("Notes-file"));
 
 
 //Course api

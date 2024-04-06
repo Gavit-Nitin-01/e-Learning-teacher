@@ -23,13 +23,6 @@ router.post('/createcourse',fetchteacher, [
         return res.status(400).json({ success, errors: errors.array() })
     }
     try {
-        // let course = await Course.findOne({ Course_Id: req.body.Course_Id })
-        // //check wather the use with email exists already
-        // if (course) {
-        //     return res.status(400).json({ success, errors: "soory the course is exists already" })
-        // }
-
-        
         //create new course
         const data = await Course.create({
             Course_Id: req.body.Course_Id,
@@ -38,12 +31,24 @@ router.post('/createcourse',fetchteacher, [
             teacher : req.data
         })
         success = true;
-        res.json({ success, data })
+        res.json(data)
+        console.log(data)
     } catch (error) {
         console.log(error.message)
         res.status(500).send("Internal server error")
     }
 })
 
+
+// ROUTE 2: Get All the Notes using: GET "/api/course/fetchcourse". Login required
+router.get('/fetchCourse', fetchteacher, async (req, res) => {
+    try {
+        const notes = await Course.find({ teacher: req.data });
+        res.json(notes)
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).send("Internal Server Error");
+    }
+})
 
 module.exports = router
