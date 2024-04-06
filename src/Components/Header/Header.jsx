@@ -35,8 +35,8 @@ export default function Header({ onSidebarToggle }) {
                     <li className="nav-item dropdown">
                         <a className="nav-link dropdown-toggle" id="navbarDropdown" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i className="fas fa-user fa-fw"></i> {data.name} </a>
                         <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <li><a className="dropdown-item" href="#!">Settings</a></li>
-                            <li><a className="dropdown-item" href="#!">Activity Log</a></li>
+                            <li><Link className="dropdown-item" to="/home">Settings</Link></li>
+                            <li><Link className="dropdown-item" to="/profile">Profile</Link></li>
                             <li><hr className="dropdown-divider" /></li>
                             <li><a className="dropdown-item" onClick={handleLogout} >Logout</a></li>
                         </ul>

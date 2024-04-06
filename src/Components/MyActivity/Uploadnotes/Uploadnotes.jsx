@@ -12,7 +12,6 @@ export default function Uploadnotes() {
   const [desc, setDesc] = useState("");
   const [file, setFile] = useState("");
   const [image, setImage] = useState("");
-
   const convetToBase64 = (e) => {
     let render = new FileReader();
     render.readAsDataURL(e.target.files[0]);
@@ -34,6 +33,7 @@ export default function Uploadnotes() {
   const submitImage = async (e) => {
     e.preventDefault();
     addNotes(title, desc, file, image);
+    setTitle("")
   };
   return (
     <>
@@ -49,7 +49,7 @@ export default function Uploadnotes() {
               <h6 className="text-center mb-4 text-muted">upload your file</h6>
               <form onSubmit={submitImage}>
                 <div className="mb-3">
-                  <label htmlFor="exampleInputEmail1" className="form-label">
+                  <label  className="form-label">
                     Book title
                   </label>
                   <input
@@ -57,17 +57,19 @@ export default function Uploadnotes() {
                     className="form-control"
                     id="title"
                     name='title'
+                    minLength={3}
                     onChange={(e) => { setTitle(e.target.value) }}
                   />
                 </div>
                 <div className="mb-3">
-                  <label htmlFor="exampleFormControlTextarea1" className="form-label">
+                  <label className="form-label">
                     Discription
                   </label>
                   <textarea
                     className="form-control"
                     id="exampleFormControlTextarea1"
                     rows="3"
+                    minLength={10}
                     onChange={(e) => { setDesc(e.target.value) }}
                   ></textarea>
                 </div>
@@ -86,7 +88,6 @@ export default function Uploadnotes() {
                   <div className="imgsection">
                     <div className="custom-file overflow-hiddenmb-5">
                       <div>Chooes a PDF File</div>
-                      <label htmlFor="img"></label>
                       <input type="file" id="img" name="img" accept="image/*" onChange={convetToBase64} />
                       <div className="imgcondition">
                         ( Chooes a image and size must be 150x150 pixel )
@@ -103,7 +104,7 @@ export default function Uploadnotes() {
                 <br></br>
 
                 <label>
-                  <button className='btn btn-primary' type='submit'>
+                  <button className='btn ' style={{background:"#1c2785",color:"white"}} type='submit'>
                     Upload
                   </button>
                 </label>

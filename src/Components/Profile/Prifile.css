@@ -1,0 +1,44 @@
+.myprofile {
+    height: 500px;
+    width: 400px;
+    margin: 50px 350px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 3px 0px blue;
+    border: 1px solid black;
+
+}
+
+.text-center {
+    margin: 20px 0px;
+}
+
+input {
+    border-color: none;
+}
+
+.form-group1 {
+    width: 80%;
+    margin-left: 35px;
+    align-items: center;
+}
+
+.form-group2 {
+    width: 80%;
+    margin-left: 35px;
+    align-items: center;
+}
+
+.form-group3 {
+    width: 80%;
+    margin-left: 35px;
+    align-items: center;
+}
+
+.savebtn {
+    margin: 20px 300px;
+    height: 32px;
+    width: 70px;
+    color: white;
+    border-radius: 5px;
+    background-color: rgb(52, 52, 251);
+}

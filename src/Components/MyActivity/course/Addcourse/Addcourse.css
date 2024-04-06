@@ -12,3 +12,12 @@
     padding: 10px;
     border: 1px solid;
 }
+.addcourse{
+    height: 35px;
+    color: white;
+    border: none;
+    margin-left: 80%;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: rgb(10, 10, 148);
+}

@@ -16,10 +16,10 @@ function App() {
   const handleSidebarToggle = () => {
     setSidebarToggled(prevState => !prevState);
   };
+  
   return (
-    <>
+    <> 
       <TeacherState>
-
         <div className="sb-nav-fixed">
           <Header onSidebarToggle={handleSidebarToggle} />
           <div id="layoutSidenav">
@@ -28,7 +28,7 @@ function App() {
             </div>
             <div id="layoutSidenav_content">
               <main>
-                <Outlet />
+              <Outlet />
               </main>
               <Footer />
             </div>

@@ -16,15 +16,18 @@ export default function TeacherState(props) {
     const [data, setData] = useState([]);
     const [notes, setNotes] = useState([])
     const [totalNotes, setTotalNotes] = useState([])
+    const [course, setCourse] = useState([])
+    const [totalCourse, setTotalCourse] = useState([])
 
     useEffect(() => {
         getDtatT();
         getNotes();
+        getCourse();
     }, [])
 
 
     // add notes 
-    const addNotes = async (title, desc, file, image, _id) => {
+    const addNotes = async (title, desc, file, image) => {
         const formData = new FormData();
         formData.append("title", title);
         formData.append("description", desc);
@@ -41,8 +44,9 @@ export default function TeacherState(props) {
                     "auth-token": localStorage.getItem('token')
 
                 },
-            });
-
+            }
+        );
+        
         if (!result) {
             toast.error('File Not Uploaded', {
                 position: "top-right",
@@ -60,12 +64,13 @@ export default function TeacherState(props) {
                 theme: "colored",
             });
         }
+       const note = await result.json();
+        setNotes(notes.concat(note))
 
     }
 
 
     //get all data teacher using this
-
     const getDtatT = () => {
 
         fetch(`${host}/api/teacher/getteacher`, {
@@ -73,18 +78,15 @@ export default function TeacherState(props) {
             headers: {
                 'auth-token': localStorage.getItem('token')
             }
-        })
-            .then(response => response.json())
-            .then(data => {
-                setData(data);
-            })
-            .catch(error => {
-                console.error('Error fetching data:', error);
-            });
+        }).then(response => response.json()).then(data => {
+            setData(data);
+        }).catch(error => {
+            console.error('Error fetching data:', error);
+        });
 
     }
 
-    // Get all Notes
+    // Get all Notes for teacher own
     const getNotes = async () => {
         // API Call 
         const response = await fetch(`${host}/api/notes/fetchallnotes`, {
@@ -99,8 +101,25 @@ export default function TeacherState(props) {
         setTotalNotes(json.length);
     }
 
+
+    // Get all Notes for teacher own
+    const getCourse = async () => {
+        // API Call 
+        const response = await fetch(`${host}/api/course/fetchCourse`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                "auth-token": localStorage.getItem('token')
+            }
+        });
+        const json = await response.json()
+        setNotes(course.concat(json))
+        setCourse(json)
+        setTotalCourse(json.length);
+    }
+
     return (
-        <TeacherContext.Provider value={{ addNotes, data , notes ,totalNotes}}>
+        <TeacherContext.Provider value={{ addNotes, data, notes, totalNotes,course ,totalCourse}}>
             {props.children}
         </TeacherContext.Provider>
     )

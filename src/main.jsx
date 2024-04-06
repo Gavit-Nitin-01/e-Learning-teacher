@@ -22,24 +22,26 @@ import ForgotPass from './Components/ForgotPass/ForgotPass.jsx';
 import Uploadnotes from './Components/MyActivity/Uploadnotes/Uploadnotes.jsx'
 import NotesT from './Components/TableData/NotesT.jsx';
 import Addcourse from './Components/MyActivity/course/Addcourse/Addcourse.jsx';
+import Profile from './Components/Profile/Profile.jsx'
 
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
+
       <Route path='/' element={<Login />} />
       <Route path='/signup' element={<Registration />} />
       <Route path='/forgotpass' element={<ForgotPass />} />
-      <Route path="/" element={<App />}>
+      <Route element={<App />}>
         <Route path='/home' element={<Home />} />
         <Route path='/upldvideo' element={<Uploadvideo />} />
         <Route path='/upldnotes' element={<Uploadnotes />} />
-        <Route path='/noteslist' element={<NotesT/>}/>
-        <Route path='/addcourse' element={<Addcourse/>}/>
-
-
+        <Route path='/noteslist' element={<NotesT />} />
+        <Route path='/addcourse' element={<Addcourse />} />
+        <Route path='/profile' element={<Profile />} />
       </Route>
       <Route path='*' element={<Error />}></Route>
+
     </>
   )
 );

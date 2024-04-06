@@ -5,20 +5,10 @@ export default function Uploadvideo() {
     <div>
       <h2 className="heading">UPLOAD VIDEO</h2>
       <div className="containerr ">
-        <div className="col-md-6">
-          <label for="inputState">videos</label>
-          <select id="inputState" class="form-control">
-            <option selected>Choose...</option>
-            <option>...</option>
-            <option>...</option>
-            <option>...</option>
-            <option>...</option>
-            <option>...</option>
-          </select>
-        </div>
+       
 
         <div className="Vdoinfo">
-          <label for="vinfo">Video title</label>
+          <label>Video title</label>
           <br></br>
           <input
             type="text"
@@ -28,14 +18,14 @@ export default function Uploadvideo() {
           />
         </div>
 
-        <div class="discription">
-          <label for="discribe">Discription</label>
+        <div className="discription">
+          <label>Discription</label>
           <br></br>
           <textarea
             id="discribe"
             name="discribe"
             rows="4"
-            cols="70"
+            cols="83"
             placeholder="Discription"
           ></textarea>
         </div>
@@ -43,7 +33,7 @@ export default function Uploadvideo() {
         <div className="Vdochoose">
           <div>choose video</div>
           <div>
-            <input type="file" class="form-control-file" id="Vdoupload" />
+            <input type="file" className="form-control-file" id="Vdoupload" />
           </div>
         </div>
 

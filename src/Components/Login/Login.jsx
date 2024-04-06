@@ -20,6 +20,7 @@ export default function Login() {
         if (json.success) {
             localStorage.setItem('token', json.teacherResult.token)
             localStorage.setItem('_id',json.teacherResult._id);
+            window.localStorage.setItem('isLoggedIn',true);
             toast.success('Welcome Teacher', {
                 position: "top-right",
                 autoClose: 3000,
