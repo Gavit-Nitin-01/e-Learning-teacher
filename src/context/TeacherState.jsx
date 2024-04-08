@@ -41,12 +41,11 @@ export default function TeacherState(props) {
                 headers: {
                     "Content-Type": "multipart/form-data",
                     "Access-Control-Allow-Origin": "*",
-                    "auth-token": localStorage.getItem('token')
-
+                    "auth-token": localStorage.getItem('token'),
                 },
             }
         );
-        
+
         if (!result) {
             toast.error('File Not Uploaded', {
                 position: "top-right",
@@ -64,15 +63,15 @@ export default function TeacherState(props) {
                 theme: "colored",
             });
         }
-       const note = await result.json();
+        const note = await result.json();
         setNotes(notes.concat(note))
+        getNotes();
 
     }
 
 
     //get all data teacher using this
     const getDtatT = () => {
-
         fetch(`${host}/api/teacher/getteacher`, {
             method: 'post',
             headers: {
@@ -83,7 +82,42 @@ export default function TeacherState(props) {
         }).catch(error => {
             console.error('Error fetching data:', error);
         });
+    }
 
+
+
+    //Add course
+    const addCourse = async (name, description, image) => {
+        const response = await fetch(
+            `${host}/api/course/createcourse`,
+            {
+                method:"post",
+                headers: {
+                    "Content-Type": "application/json",
+                    "auth-token": localStorage.getItem('token'),
+                },
+                body:JSON.stringify({name, description, image})
+            }
+        );
+        const course = await response.json();
+        console.log(response)
+        if (!course) {
+            toast.error('Something wrrong', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                theme: "colored",
+            });
+        } else {
+            toast.success('Course Add Successfuly', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                theme: "colored",
+            });
+        }
     }
 
     // Get all Notes for teacher own
@@ -102,24 +136,24 @@ export default function TeacherState(props) {
     }
 
 
-    // Get all Notes for teacher own
+    // Get all Course for teacher own
     const getCourse = async () => {
         // API Call 
         const response = await fetch(`${host}/api/course/fetchCourse`, {
             method: 'GET',
             headers: {
-                'Content-Type': 'application/json',
+                "Content-Type": "application/json",
                 "auth-token": localStorage.getItem('token')
             }
         });
         const json = await response.json()
-        setNotes(course.concat(json))
+        setCourse(course.concat(json))
         setCourse(json)
         setTotalCourse(json.length);
     }
 
     return (
-        <TeacherContext.Provider value={{ addNotes, data, notes, totalNotes,course ,totalCourse}}>
+        <TeacherContext.Provider value={{ addNotes, data, notes, totalNotes, course, totalCourse, addCourse }}>
             {props.children}
         </TeacherContext.Provider>
     )
