@@ -1,12 +1,10 @@
 import React, { useContext, useState } from "react";
 import "./Addcourse.css";
 import { toast } from 'react-toastify';
-import teacherContext from "../../../../context/teacherContext";
-import TableData from "./TableData";
+import { Link } from "react-router-dom";
 
 export default function Addcourse() {
-  const context = useContext(teacherContext);
-  const { course } = context
+
 
   const [Course_Id, setCourseId] = useState("");
   const [name, setName] = useState("");
@@ -103,36 +101,10 @@ export default function Addcourse() {
             </div>
             <br></br>
             <div>
-
               <button className="addcourse" type='submit' >Add Course</button>
             </div>
+            <Link to="/courselist">View Course List</Link>
           </form>
-        </div>
-        <hr></hr>
-        <div className="card mb-4 mx-4">
-          <div className="card-header">
-            <i className="fas fa-table me-1"></i>
-            DataTable Notes
-          </div>
-          <div className="card-body">
-            <table className="table">
-              <thead>
-                <tr>
-                  <th>Course Id</th>
-                  <th>Name</th>
-                  <th>Description</th>
-                </tr>
-              </thead>
-              <tbody>
-                {
-                  course.map((data, id) => {
-                    return <TableData key={id} data={data} />
-                  })
-                }
-              </tbody>
-            </table>
-
-          </div>
         </div>
       </div>
     </div>
