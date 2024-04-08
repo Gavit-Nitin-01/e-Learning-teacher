@@ -20,9 +20,11 @@ import Uploadvideo from './Components/MyActivity/Uploadvideo/Uploadvideo.jsx';
 import Registration from './Components/Registration/Registration.jsx';
 import ForgotPass from './Components/ForgotPass/ForgotPass.jsx';
 import Uploadnotes from './Components/MyActivity/Uploadnotes/Uploadnotes.jsx'
-import NotesT from './Components/TableData/NotesT.jsx';
+import NotesT from './Components/Tables/NotesT.jsx';
 import Addcourse from './Components/MyActivity/course/Addcourse/Addcourse.jsx';
 import Profile from './Components/Profile/Profile.jsx'
+import CourseT from './Components/Tables/CourseT.jsx';
+import AddCourse from './Components/MyActivity/Course_Video/AddCourse.jsx';
 
 
 const router = createBrowserRouter(
@@ -37,10 +39,12 @@ const router = createBrowserRouter(
         <Route path='/upldvideo' element={<Uploadvideo />} />
         <Route path='/upldnotes' element={<Uploadnotes />} />
         <Route path='/noteslist' element={<NotesT />} />
-        <Route path='/addcourse' element={<Addcourse />} />
+        <Route path='/courselist' element={<CourseT />} />
+        <Route path='/addtutorial' element={<Addcourse />} />
+        <Route path='/addcourse' element={<AddCourse />} />
         <Route path='/profile' element={<Profile />} />
       </Route>
-      <Route path='*' element={<Error />}></Route>
+      {/* <Route path='*' element={<Error />}></Route> */}
 
     </>
   )
