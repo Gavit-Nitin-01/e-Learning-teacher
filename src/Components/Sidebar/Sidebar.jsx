@@ -29,8 +29,8 @@ export default function Sidebar({ isSidebarToggled }) {
                     <div className="collapse" id="collapseLayouts1" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                         <nav className="sb-sidenav-menu-nested nav">
                             <Link className="nav-link" to="/noteslist">Notes</Link>
-                            <Link className="nav-link" to="/teachert">Course</Link>
-                            <Link className="nav-link" to="/studentt">Playlist</Link>
+                            <Link className="nav-link" to="/courselist">Course</Link>
+                            <Link className="nav-link" to="/home">Playlist</Link>
                         </nav>
                     </div>
                     
@@ -69,21 +69,34 @@ export default function Sidebar({ isSidebarToggled }) {
 
                     <a className="nav-link collapsed" href="" data-bs-toggle="collapse" data-bs-target="#collapseLayouts3" aria-expanded="false" aria-controls="collapseLayouts">
                         <div className="sb-nav-link-icon"><i className="fa-solid fa-layer-group"></i></div>
-                       Course
+                       Tutorial
                         <div className="sb-sidenav-collapse-arrow"><i className="fas fa-angle-down"></i></div>
                     </a>
                     <div className="collapse" id="collapseLayouts3" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                         <nav className="sb-sidenav-menu-nested nav">
-                            <Link className="nav-link" to="/addcourse">Add course</Link>
-                            <Link className="nav-link" to="/addcourse">Teacher's</Link>
+                            <Link className="nav-link" to="/addtutorial">Add Tutorial</Link>
+                            <Link className="nav-link" to="/home">View Tutorial</Link>
                             
                         </nav>
                     </div>
 
-                    <Link className="nav-link" to="/upldvideo">
+                    <a className="nav-link collapsed" href="" data-bs-toggle="collapse" data-bs-target="#collapseLayouts4" aria-expanded="false" aria-controls="collapseLayouts">
+                        <div className="sb-nav-link-icon"><i className="fa-solid fa-video"></i></div>
+                       Course - video
+                        <div className="sb-sidenav-collapse-arrow"><i className="fas fa-angle-down"></i></div>
+                    </a>
+                    <div className="collapse" id="collapseLayouts4" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                        <nav className="sb-sidenav-menu-nested nav">
+                            <Link className="nav-link" to="/addcourse">Add Course</Link>
+                            <Link className="nav-link" to="/home">View Course</Link>
+                            
+                        </nav>
+                    </div>
+
+                    {/* <Link className="nav-link" to="/upldvideo">
                         <div className="sb-nav-link-icon"><i className="fa-solid fa-video"></i></div>
                         Videos
-                    </Link>
+                    </Link> */}
                     <a className="nav-link" href="#">
                         <div className="sb-nav-link-icon"><i className="fa-solid fa-book-open-reader"></i></div>
                         Assignment
