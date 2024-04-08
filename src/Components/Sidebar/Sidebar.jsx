@@ -23,7 +23,7 @@ export default function Sidebar({ isSidebarToggled }) {
                     
                     <a className="nav-link collapsed" href="" data-bs-toggle="collapse" data-bs-target="#collapseLayouts1" aria-expanded="false" aria-controls="collapseLayouts">
                         <div className="sb-nav-link-icon"><i className="fa-solid fa-table"></i></div>
-                        Data List
+                        Data List -------
                         <div className="sb-sidenav-collapse-arrow"><i className="fas fa-angle-down"></i></div>
                     </a>
                     <div className="collapse" id="collapseLayouts1" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
@@ -34,34 +34,7 @@ export default function Sidebar({ isSidebarToggled }) {
                         </nav>
                     </div>
                     
-                  
-                    <div className="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
-                        <nav className="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                            <a className="nav-link collapsed" href="" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
-                                Authentication
-                                <div className="sb-sidenav-collapse-arrow"><i className="fas fa-angle-down"></i></div>
-                            </a>
-                            <div className="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
-                                <nav className="sb-sidenav-menu-nested nav">
-                                    <Link className="nav-link" href="/login">Login</Link>
-                                    <Link className="nav-link" to="/singup">Register</Link>
-                                    <Link className="nav-link" href="">Forgot Password</Link>
-                                </nav>
-                            </div>
-                            <a className="nav-link collapsed" href="" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
-                                Error
-                                <div className="sb-sidenav-collapse-arrow"><i className="fas fa-angle-down"></i></div>
-                            </a>
-                            <div className="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
-                                <nav className="sb-sidenav-menu-nested nav">
-                                    <a className="nav-link" href="">401 Page</a>
-                                    <a className="nav-link" href="">404 Page</a>
-                                    <a className="nav-link" href="">500 Page</a>
-                                </nav>
-                            </div>
-                        </nav>
-                    </div>
-                    <div className="sb-sidenav-menu-heading"> <i className="fa-solid fa-graduation-cap"></i> My activity </div>
+                    <div className="sb-sidenav-menu-heading"> <i className="fa-solid fa-graduation-cap"></i> My activity ------- </div>
                     <Link className="nav-link" to="/upldnotes">
                         <div className="sb-nav-link-icon"><i className="fa-solid fa-book-open"></i></div>
                         Books
