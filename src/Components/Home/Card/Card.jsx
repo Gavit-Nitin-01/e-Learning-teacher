@@ -25,7 +25,7 @@ export default function Card() {
                             <div className="ag-courses-item_bg"></div>
 
                             <div className="ag-courses-item_title">
-                                Total Notes Uploaded  👉  {totalCourse}
+                                Total Uploaded Course  👉  {totalCourse}
                             </div>
                         </Link>
                     </div>
