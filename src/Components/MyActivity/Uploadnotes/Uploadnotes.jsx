@@ -33,7 +33,7 @@ export default function Uploadnotes() {
   const submitImage = async (e) => {
     e.preventDefault();
     addNotes(title, desc, file, image);
-    setTitle("")
+    
   };
   return (
     <>

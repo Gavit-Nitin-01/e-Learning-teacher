@@ -1,43 +1,103 @@
-.containerr {
-    height: 430px;
-    width: 80%;
-    margin: 50px 10%;
-    box-shadow: 0px 0px 3px 0px grey;
-    border: 1px solid blue;
-    align-items: center;
-}
+ .containerr {
+     height: 400px;
+     width: 80%;
+     margin: 50px 10%;
+     box-shadow: 0px 0px 3px 0px rgb(73, 92, 126);
+     border: 1px solid rgb(22, 22, 173);
+     align-items: center;
+ }
 
-.heading {
-    margin: 15px 50px;
-}
+ .heading {
+     margin: 15px 50px;
+ }
 
-.col-md-6 {
-    margin: 10px 20%;
-    width: 60%;
-}
+ .Vdoinfo {
+     margin-top: 50px;
+     margin-left: 20%;
+ }
 
+ .Vdoinfo input {
+     width: 75%;
+ }
 
-.Vdoinfo {
-    margin-left: 20%;
-}
+ .discription {
+     padding-left: 15%;
+ }
 
-.Vdoinfo input {
-    width: 75%;
-}
+ .Vdochoose {
+     margin-left: 20%;
+ }
 
-.discription {
-    padding-left: 15%;
-}
+ .uploadbtn {
+     height: 9%;
+     width: 15%;
+     margin-left: 70%;
+     border-radius: 5px;
+     color: white;
+     border: none;
+     background-color: rgb(48, 56, 172);
+ }
 
-.Vdochoose {
-    margin-left: 20%;
-}
+ /*ulternate page*/
 
-.uploadbtn {
-    height: 9%;
-    width: 15%;
-    margin-left: 70%;
-    border-radius: 5px;
-    color: white;
-    background-color: rgb(60, 71, 224);
-}
+ .file-upload input[type='file'] {
+     display: none;
+ }
+
+ .heading {
+     align-items: center;
+ }
+
+ .playlistIcon {
+     height: 150px;
+     margin-left: 42%;
+     border-radius: 100px;
+ }
+
+ .Vinfo {
+     margin: 15px 50px;
+ }
+
+ .Vinfo input {
+     width: 100%;
+ }
+
+ .themes {
+     height: 150px;
+     width: 100px;
+     margin-right: 400px;
+ }
+
+ .discription {
+     margin: 15px 50px;
+ }
+
+ .Title {
+     font-size: 25px;
+     margin: 20px 50px;
+     display: flex;
+     justify-content: center;
+ }
+
+ .rounded-lg {
+     border-radius: 1rem;
+ }
+
+ .custom-file-label.rounded-pill {
+     border-radius: 50rem;
+ }
+
+ .custom-file-label.rounded-pill::after {
+     border-radius: 0 50rem 50rem 0;
+ }
+
+ .addplaylist {
+     float: right;
+     height: 35px;
+     width: 100px;
+     color: white;
+     border-radius: 5px;
+     border: none;
+     background-color: rgb(25, 25, 146);
+     margin: 10px;
+ }
