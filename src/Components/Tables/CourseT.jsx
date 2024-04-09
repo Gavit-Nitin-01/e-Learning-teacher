@@ -20,13 +20,17 @@ export default function CourseT() {
                         DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the
                         <a target="_blank" href="">official DataTables documentation</a>
                         .
-                        
+
+                    </div>
+                    <div>
+                        <Link to="/addcourse"><button className='btn float-end m-2' style={{ background: "#1c2785", color: "white" }}>Add Course</button></Link>
                     </div>
                 </div>
+
                 <div className="card mb-4">
                     <div className="card-header">
                         <i className="fas fa-table me-1"></i>
-                        DataTable Notes
+                        DataTable Course
                     </div>
                     <div className="card-body">
                         <table className="table">

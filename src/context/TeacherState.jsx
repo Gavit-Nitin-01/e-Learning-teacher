@@ -25,6 +25,20 @@ export default function TeacherState(props) {
         getCourse();
     }, [])
 
+    //get all data teacher using this
+    const getDtatT = () => {
+        fetch(`${host}/api/teacher/getteacher`, {
+            method: 'post',
+            headers: {
+                'auth-token': localStorage.getItem('token')
+            }
+        }).then(response => response.json()).then(data => {
+            setData(data);
+        }).catch(error => {
+            console.error('Error fetching data:', error);
+        });
+    }
+
 
     // add notes 
     const addNotes = async (title, desc, file, image) => {
@@ -63,28 +77,10 @@ export default function TeacherState(props) {
                 theme: "colored",
             });
         }
-        const note = await result.json();
-        setNotes(notes.concat(note))
-        getNotes();
+        // const note = await result.json();
+        // setNotes(notes.concat(note));
 
     }
-
-
-    //get all data teacher using this
-    const getDtatT = () => {
-        fetch(`${host}/api/teacher/getteacher`, {
-            method: 'post',
-            headers: {
-                'auth-token': localStorage.getItem('token')
-            }
-        }).then(response => response.json()).then(data => {
-            setData(data);
-        }).catch(error => {
-            console.error('Error fetching data:', error);
-        });
-    }
-
-
 
     //Add course
     const addCourse = async (name, description, image) => {

@@ -20,6 +20,9 @@ export default function NotesT() {
                         <a target="_blank" href="">official DataTables documentation</a>
                         .
                     </div>
+                    <div>
+                        <Link to="/upldnotes"><button className='btn float-end m-2' style={{ background: "#1c2785", color: "white" }}>Add Notes</button></Link>
+                    </div>
                 </div>
                 <div className="card mb-4">
                     <div className="card-header">

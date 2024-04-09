@@ -1,5 +1,4 @@
 import React, { useContext, useState } from 'react'
-import './Addtutorials.css'
 import teacherContext from '../../../context/teacherContext';
 
 export default function AddTutorial() {
@@ -10,7 +9,7 @@ export default function AddTutorial() {
     const [name, setName] = useState("");
     const [description, setDesc] = useState("");
     const [image, setImage] = useState("");
-    
+
     const convetToBase64 = (e) => {
         let render = new FileReader();
         render.readAsDataURL(e.target.files[0]);
@@ -34,7 +33,7 @@ export default function AddTutorial() {
         addCourse(name, description, image);
     };
 
-    
+
 
     return (
         <>
@@ -51,7 +50,7 @@ export default function AddTutorial() {
                             <form onSubmit={submitImage}>
                                 <div className="mb-3">
                                     <label className="form-label">
-                                       Course Name 
+                                        Course Name
                                     </label>
                                     <input
                                         type="text"
@@ -75,7 +74,7 @@ export default function AddTutorial() {
                                     ></textarea>
                                 </div>
                                 <div className="Choosefile">
-                                   
+
                                     <div className="imgsection">
                                         <div className="custom-file overflow-hiddenmb-5">
                                             <div>Chooes Image File</div>
@@ -88,23 +87,26 @@ export default function AddTutorial() {
                                         <img
                                             className="themes"
                                             src={image}
-                                            
+
                                             alt="image"
                                         ></img>
                                     </div>
                                 </div>
                                 <br></br>
 
-                                 
-                                    <button className='uploadbtn' style={{ background: "#1c2785", color: "white" }} type='submit'>
-                                        Add 
-                                    </button>
-                               
-                            </form>
-                        </div>
+
+                                <button className='uploadbtn' style={{
+                                    background: "#1c2785", color: "white"  ,float:"inline-end",
+                                    height: "40px"
+                                }} type='submit'>
+                                Add
+                            </button>
+
+                        </form>
                     </div>
                 </div>
             </div>
+        </div >
         </>
     )
 }
