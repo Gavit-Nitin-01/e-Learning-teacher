@@ -3,12 +3,12 @@ const { default: mongoose } = require("mongoose");
 
 const { Schema } = mongoose;
 
-const CourseSchema = new Schema({
+const CourseVideoSchema = new Schema({
     teacher:{
         type:mongoose.Schema.Types.ObjectId,
         ref:'teacher'
     },
-    name: {
+    title: {
         type: String,
         required: true
     },
@@ -16,7 +16,7 @@ const CourseSchema = new Schema({
         type: String,
         required: true
     },
-    image: {
+    video: {
         type: String,
         required: true
     },
@@ -26,5 +26,5 @@ const CourseSchema = new Schema({
     }
 
 });
-const Course = mongoose.model("course", CourseSchema);
-module.exports = Course;
+const CourseVideo = mongoose.model("coursevideo", CourseVideoSchema);
+module.exports = CourseVideo;

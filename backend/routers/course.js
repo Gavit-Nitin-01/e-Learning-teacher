@@ -2,42 +2,52 @@ const express = require("express");
 const Course = require('../models/Course');
 const { validationResult, body } = require("express-validator");
 const fetchteacher = require("../middleware/fetchteacher");
-const Teacher = require("../models/Teacher");
+const CourseVideo = require("../models/CourseVideo");
+const fetchcourse = require("../middleware/fetchcourse");
 const router = express.Router();
+const multer = require('multer');
 
 // const JWT_SECRET = 'ELEARNING';
 
 
+
+//multer to create a folder----------------------------------
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, "./Course-video");
+    },
+    filename: function (req, file, cb) {
+        const uniqueSuffix = Date.now();
+        cb(null, uniqueSuffix + file.originalname);
+    },
+});
+
+const upload = multer({
+    storage: storage
+})
+
 //ROUTE 1: Create a Course using : POST "/api/course/createcourse"
-router.post('/createcourse',fetchteacher, [
-    body('Course_Id', 'Enter courseId').isLength({ min: 5 }),
-    body('name', 'Enter valid name').isLength({min:3}),
-    body('description', 'Enter short description').isLength({min:10})
-], async (req, res) => {
+router.post('/coursevideo', fetchteacher, upload.single("file"), async (req, res) => {
+    const title = req.body.title;
+    const description = req.body.description;
+    const teacher = req.data
 
-    let success = false;
+    if (Array.isArray(req.files.video) && req.files.video.length > 0) {
+        for (let video of req.files.videos) {
+          videosPaths.push("/" + video.path);
+        }
+      }
 
-    //if there are errors, return bad request and the errors
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-        return res.status(400).json({ success, errors: errors.array() })
-    }
     try {
-        //create new course
-        const data = await Course.create({
-            Course_Id: req.body.Course_Id,
-            name: req.body.name,
-            description: req.body.description,
-            teacher : req.data
-        })
-        success = true;
-        res.json(data)
+        const data = await CourseVideo.create({ title: title,description: description,video: videosPaths, teacher:teacher});
+        res.send({ status: "ok", data })
         console.log(data)
+
     } catch (error) {
         console.log(error.message)
         res.status(500).send("Internal server error")
     }
-})
+});
 
 
 // ROUTE 2: Get All the Notes using: GET "/api/course/fetchcourse". Login required
@@ -50,5 +60,31 @@ router.get('/fetchCourse', fetchteacher, async (req, res) => {
         res.status(500).send("Internal Server Error");
     }
 })
+
+
+
+// // ROUTE 3: Add Video in Course List: POST "/api/course/coursevideo". Login required
+// router.post('/coursevideo', fetchteacher, async (req, res) => {
+
+
+//     const title = req.body.title;
+//     const description = req.body.description;
+//     // const filename = req.file.filename; 
+//     // const image = req.body.image;
+//     const teacher = req.data
+
+//     try {
+//         const data = await CourseVideo.create({ title: title , description: description,teacher:teacher});
+//         res.send({ status: "ok", data })
+//         console.log(data)
+
+//     } catch (error) {
+//         console.log(error.message)
+//         res.status(500).send("Internal server error")
+//     }
+// });
+
+
+
 
 module.exports = router

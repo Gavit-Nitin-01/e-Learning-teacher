@@ -32,7 +32,7 @@ app.use('/api/notes',require('./routers/notes'))
 app.use("/Notes-file", express.static("Notes-file"));
 
 
-//Course api
+//Course-video api
 app.use('/api/course',require('./routers/course'))
 
 

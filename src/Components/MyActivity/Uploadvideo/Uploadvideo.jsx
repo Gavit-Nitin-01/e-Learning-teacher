@@ -33,13 +33,13 @@ export default function Uploadvideo() {
         <div className="Vdochoose">
           <div>choose video</div>
           <div>
-            <input type="file" class="form-control-file" id="Vdoupload" />
+            <input type="file" class="form-control-file" id="Vdoupload" accept="video/*" />
           </div>
         </div>
 
 
         <button type="submit" className="uploadbtn">
-          Add playlist
+          Add
         </button>
 
       </div>

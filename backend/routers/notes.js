@@ -65,7 +65,7 @@ router.post('/addnotes', fetchteacher, upload.single("file"), async (req, res) =
 });
 
 
-// ROUTE 1: Get All the Notes using: GET "/api/notes/getuser". Login required
+// ROUTE 1: Get All the Notes for teacher using: GET "/api/notes/getuser". Login required
 router.get('/fetchallnotes', fetchteacher, async (req, res) => {
     try {
         const notes = await Notes.find({ teacher: req.data });
@@ -75,6 +75,7 @@ router.get('/fetchallnotes', fetchteacher, async (req, res) => {
         res.status(500).send("Internal Server Error");
     }
 })
+
 
 
 module.exports = router
