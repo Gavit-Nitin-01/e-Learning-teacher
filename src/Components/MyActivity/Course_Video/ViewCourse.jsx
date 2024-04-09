@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import teacherContext from '../../../context/teacherContext';
-import CardCourse from './CardCourse';
+import CourseCard from './CourseCard/CourseCard';
 
 export default function ViewCourse() {
 
@@ -48,7 +48,7 @@ export default function ViewCourse() {
                 <center><h2>Course List</h2></center>
                 {
                     course.map((datac, id) => {
-                        return <CardCourse key={id} datac={datac} />
+                        return <CourseCard key={id} datac={datac} />
                     })
                 }
             </div>

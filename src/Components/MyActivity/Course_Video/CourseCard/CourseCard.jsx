@@ -1,7 +1,8 @@
 import React from 'react'
-import AddVideo from './AddVideo'
+import AddVideo from '../AddVideo'
+import { Link } from 'react-router-dom'
 
-export default function CardCourse(props) {
+export default function CourseCard(props) {
     const {datac} = props
     return (
         <>
@@ -12,7 +13,7 @@ export default function CardCourse(props) {
                     <p className="card-text">{datac.description} </p>
                     {/* <button className='btn mx-2 my-2' style={{background:'#3530b3',color:"white"}}>Add Video</button> */}
                     <AddVideo/>
-                    <button className='btn mx-2 my-2' style={{background:'#3530b3',color:"white"}}>View Playlist</button>
+                    <Link to="/videolist"><button className='btn mx-2 my-2' style={{background:'#3530b3',color:"white"}}>View Playlist</button></Link>
                 </div>
             </div>
         </>
