@@ -11,7 +11,7 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
 
 
 export default function TeacherState(props) {
-    const host = "http://localhost:4000"
+    const host = "http://localhost:4000";
 
     const [data, setData] = useState([]);
     const [notes, setNotes] = useState([])
@@ -63,7 +63,7 @@ export default function TeacherState(props) {
         if (!result) {
             toast.error('File Not Uploaded', {
                 position: "top-right",
-                autoClose: 5000,
+                autoClose: 2000,
                 hideProgressBar: false,
                 closeOnClick: true,
                 theme: "colored",
@@ -71,7 +71,7 @@ export default function TeacherState(props) {
         } else {
             toast.success('Note Uploaded Successfuly', {
                 position: "top-right",
-                autoClose: 5000,
+                autoClose: 2000,
                 hideProgressBar: false,
                 closeOnClick: true,
                 theme: "colored",
@@ -100,7 +100,7 @@ export default function TeacherState(props) {
         if (!course) {
             toast.error('Something wrrong', {
                 position: "top-right",
-                autoClose: 5000,
+                autoClose: 2000,
                 hideProgressBar: false,
                 closeOnClick: true,
                 theme: "colored",
@@ -108,7 +108,7 @@ export default function TeacherState(props) {
         } else {
             toast.success('Course Add Successfuly', {
                 position: "top-right",
-                autoClose: 5000,
+                autoClose: 2000,
                 hideProgressBar: false,
                 closeOnClick: true,
                 theme: "colored",
@@ -148,8 +148,48 @@ export default function TeacherState(props) {
         setTotalCourse(json.length);
     }
 
+
+
+    // Upload Course Video 
+    const uploadVideo = async (title, desc,video) => {
+        // const formData = new FormData();
+        // formData.append("title", title);
+        // formData.append("description", desc);
+
+        const result = await fetch(
+            `${host}/api/course/addvideo`,
+            {
+                method:"post",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body:JSON.stringify({title:title, description:desc,video:video})
+            }
+        );
+
+        if (!result) {
+            toast.error('File Not Uploaded', {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                theme: "colored",
+            });
+        } else {
+            toast.success('Note Uploaded Successfuly', {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                theme: "colored",
+            });
+        }
+        // const note = await result.json();
+        // setNotes(notes.concat(note));
+
+    }
     return (
-        <TeacherContext.Provider value={{ addNotes, data, notes, totalNotes, course, totalCourse, addCourse }}>
+        <TeacherContext.Provider value={{ addNotes, data, notes, totalNotes, course, totalCourse, addCourse ,uploadVideo}}>
             {props.children}
         </TeacherContext.Provider>
     )
