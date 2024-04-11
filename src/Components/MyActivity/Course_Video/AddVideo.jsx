@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react'
 import teacherContext from '../../../context/teacherContext';
 
 export default function AddVideo(props) {
+    const {data} = props
     
 
     const context = useContext(teacherContext);
@@ -10,18 +11,25 @@ export default function AddVideo(props) {
     const [title, setTitle] = useState("");
     const [desc, setDesc] = useState("");
     const [video, setVideo] = useState("");
+    const [courseid,setCourseId] = useState("")
+    // console.log(courseid)
 
     const submitVideo = (e) => {
         e.preventDefault();
-        uploadVideo(title,desc,video);
-        console.log(title,desc)
+        uploadVideo(title,desc,courseid);
 
+    }
+    const addVideo = (e) =>{
+        // e.preventDefault()
+        setCourseId(e);
+        // console.log("course id: ",e)
+        // setCourseId("")
     }
     
     
     return (
         <>
-            <button type="button" className="btn btn-primary"  style={{ background: '#3530b3', color: "white" }} data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            <button type="button" className="btn btn-primary" onClick={()=>{addVideo(data)}}  style={{ background: '#3530b3', color: "white" }} data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                 Add Video
             </button>
 

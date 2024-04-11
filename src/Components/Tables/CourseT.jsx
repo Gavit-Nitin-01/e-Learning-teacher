@@ -33,7 +33,7 @@ export default function CourseT() {
                         DataTable Course
                     </div>
                     <div className="card-body">
-                        <table className="table">
+                        <table className="table table-bordered">
                             <thead>
                                 <tr>
                                     <th>Name</th>

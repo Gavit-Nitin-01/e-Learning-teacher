@@ -82,6 +82,7 @@ export default function TeacherState(props) {
 
     }
 
+    
     //Add course
     const addCourse = async (name, description, image) => {
         const response = await fetch(
@@ -95,8 +96,7 @@ export default function TeacherState(props) {
                 body:JSON.stringify({name, description, image})
             }
         );
-        const course = await response.json();
-        console.log(response)
+        const newcourse = await response.json();
         if (!course) {
             toast.error('Something wrrong', {
                 position: "top-right",
@@ -132,6 +132,7 @@ export default function TeacherState(props) {
     }
 
 
+    const [courses,setCourses] = useState([])
     // Get all Course for teacher own
     const getCourse = async () => {
         // API Call 
@@ -142,19 +143,21 @@ export default function TeacherState(props) {
                 "auth-token": localStorage.getItem('token')
             }
         });
-        const json = await response.json()
-        setCourse(course.concat(json))
-        setCourse(json)
-        setTotalCourse(json.length);
+        const newCourse = await response.json()
+        setCourse(oldCourse=>[...oldCourse,newCourse])
+        setCourse(course.concat(newCourse))
+        setCourse(newCourse)
+        setTotalCourse(newCourse.length);
     }
 
 
 
     // Upload Course Video 
-    const uploadVideo = async (title, desc,video) => {
+    const uploadVideo = async (title, desc,courseid) => {
         // const formData = new FormData();
         // formData.append("title", title);
         // formData.append("description", desc);
+        console.log(courseid)
 
         const result = await fetch(
             `${host}/api/course/addvideo`,
@@ -163,7 +166,7 @@ export default function TeacherState(props) {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body:JSON.stringify({title:title, description:desc,video:video})
+                body:JSON.stringify({title:title, description:desc,course:courseid})
             }
         );
 
@@ -189,7 +192,7 @@ export default function TeacherState(props) {
 
     }
     return (
-        <TeacherContext.Provider value={{ addNotes, data, notes, totalNotes, course, totalCourse, addCourse ,uploadVideo}}>
+        <TeacherContext.Provider value={{ addNotes, data, notes, totalNotes,courses, course, totalCourse, addCourse ,uploadVideo}}>
             {props.children}
         </TeacherContext.Provider>
     )

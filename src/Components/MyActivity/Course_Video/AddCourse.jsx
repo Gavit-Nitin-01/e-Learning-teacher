@@ -9,6 +9,7 @@ export default function AddTutorial() {
     const [name, setName] = useState("");
     const [description, setDesc] = useState("");
     const [image, setImage] = useState("");
+    
 
     const convetToBase64 = (e) => {
         let render = new FileReader();
@@ -31,7 +32,10 @@ export default function AddTutorial() {
     const submitImage = async (e) => {
         e.preventDefault();
         addCourse(name, description, image);
+        setName("");
+        setDesc("");
     };
+
 
 
 
@@ -58,6 +62,7 @@ export default function AddTutorial() {
                                         id="title"
                                         name='title'
                                         minLength={3}
+                                        value={name}
                                         onChange={(e) => { setName(e.target.value) }}
                                     />
                                 </div>
@@ -70,6 +75,7 @@ export default function AddTutorial() {
                                         id="exampleFormControlTextarea1"
                                         rows="3"
                                         minLength={10}
+                                        value={description}
                                         onChange={(e) => { setDesc(e.target.value) }}
                                     ></textarea>
                                 </div>
@@ -78,7 +84,7 @@ export default function AddTutorial() {
                                     <div className="imgsection">
                                         <div className="custom-file overflow-hiddenmb-5">
                                             <div>Chooes Image File</div>
-                                            <input type="file" id="img" name="img" accept="image/*" onChange={convetToBase64} />
+                                            <input type="file" id="image" name="image" accept="image/*" onChange={convetToBase64} />
                                             <div className="imgcondition my-3">
                                                 ( Chooes a image and size must be 150x150 pixel )
                                             </div>

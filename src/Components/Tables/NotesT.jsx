@@ -30,13 +30,12 @@ export default function NotesT() {
                         DataTable Notes
                     </div>
                     <div className="card-body">
-                        <table className="table">
+                        <table className="table table-bordered">
                             <thead>
                                 <tr>
                                     <th>Title</th>
                                     <th>Description</th>
                                     <th>Image</th>
-                                    <th>PDF-Name</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
