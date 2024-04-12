@@ -27,6 +27,7 @@ import CourseT from './Components/Tables/CourseT.jsx';
 import AddCourse from './Components/MyActivity/Course_Video/AddCourse.jsx';
 import ViewCourse from './Components/MyActivity/Course_Video/ViewCourse.jsx';
 import PlayList from './Components/MyActivity/Course_Video/PlayList/PlayList.jsx';
+import AddContent from './Components/MyActivity/course/AddContent/AddContent.jsx';
 
 
 const router = createBrowserRouter(
@@ -46,6 +47,7 @@ const router = createBrowserRouter(
         <Route path='/addvideo' element={<ViewCourse/>} />
         <Route path='/addcourse' element={<AddCourse />} />
         <Route path='/videolist' element={<PlayList/>} />
+        <Route path='/addcontent' element={<AddContent/>} />
         <Route path='/profile' element={<Profile />} />
       </Route>
       <Route path='*' element={<Error />}></Route>

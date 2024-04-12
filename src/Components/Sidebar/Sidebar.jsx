@@ -48,6 +48,7 @@ export default function Sidebar({ isSidebarToggled }) {
                     <div className="collapse" id="collapseLayouts3" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                         <nav className="sb-sidenav-menu-nested nav">
                             <Link className="nav-link" to="/addtutorial">Add Tutorial</Link>
+                            <Link className="nav-link" to="/addcontent">Add Content</Link>
                             <Link className="nav-link" to="/home">View Tutorial</Link>
                             
                         </nav>

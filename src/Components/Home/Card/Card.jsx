@@ -35,14 +35,7 @@ export default function Card() {
                             <div className="ag-courses-item_bg"></div>
 
                             <div className="ag-courses-item_title">
-                                Annual package "Product+UX/UI+Graph designer&#160;2022"
-                            </div>
-
-                            <div className="ag-courses-item_date-box">
-                                Start:
-                                <span className="ag-courses-item_date">
-                                    04.11.2022
-                                </span>
+                                Total Uploaded Tutorials 👉  {totalCourse}
                             </div>
                         </a>
                     </div>
@@ -54,7 +47,7 @@ export default function Card() {
                             <div className="ag-courses-item_bg"></div>
 
                             <div className="ag-courses-item_title">
-                                Front-end development&#160;+ jQuery&#160;+ CMS
+                               Assignment
                             </div>
                         </a>
                     </div>
@@ -64,7 +57,7 @@ export default function Card() {
                             <div className="ag-courses-item_bg">
                             </div>
                             <div className="ag-courses-item_title">
-                                Digital Marketing
+                               Quiz Assignment
                             </div>
                         </a>
                     </div>
@@ -74,15 +67,10 @@ export default function Card() {
                             <div className="ag-courses-item_bg"></div>
 
                             <div className="ag-courses-item_title">
-                                Interior Design
+                              Questions
                             </div>
 
-                            <div className="ag-courses-item_date-box">
-                                Start:
-                                <span className="ag-courses-item_date">
-                                    31.10.2022
-                                </span>
-                            </div>
+                            
                         </a>
                     </div>
 
