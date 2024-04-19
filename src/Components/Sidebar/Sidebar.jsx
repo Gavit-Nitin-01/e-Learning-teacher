@@ -63,6 +63,7 @@ export default function Sidebar({ isSidebarToggled }) {
                         <nav className="sb-sidenav-menu-nested nav">
                             <Link className="nav-link" to="/addcourse">Add Course</Link>
                             <Link className="nav-link" to="/addvideo">View Course</Link>
+                            <Link className="nav-link" to="/ddvideo">Add Video</Link>
                             
                         </nav>
                     </div>

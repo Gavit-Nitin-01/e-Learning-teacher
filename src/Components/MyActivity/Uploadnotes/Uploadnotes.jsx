@@ -10,8 +10,9 @@ export default function Uploadnotes() {
 
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
-  const [file, setFile] = useState("");
+  const [filename, setFile] = useState("");
   const [image, setImage] = useState("");
+
   const convetToBase64 = (e) => {
     let render = new FileReader();
     render.readAsDataURL(e.target.files[0]);
@@ -32,8 +33,11 @@ export default function Uploadnotes() {
 
   const submitImage = async (e) => {
     e.preventDefault();
-    addNotes(title, desc, file, image);
-
+    addNotes(title, desc, filename, image, setTitle);
+    setTitle("");
+    setDesc("");
+    setImage("");
+    setFile("");
   };
   return (
     <>
@@ -56,6 +60,7 @@ export default function Uploadnotes() {
                   className="form-control"
                   id="title"
                   name='title'
+                  value={title}
                   minLength={3}
                   onChange={(e) => { setTitle(e.target.value) }}
                 />
@@ -67,8 +72,9 @@ export default function Uploadnotes() {
                 <textarea
                   className="form-control"
                   id="exampleFormControlTextarea1"
+                  value={desc}
                   rows="3"
-                  minLength={10}
+                  // minLength={10}
                   onChange={(e) => { setDesc(e.target.value) }}
                 ></textarea>
               </div>
@@ -81,23 +87,24 @@ export default function Uploadnotes() {
                     type="file"
                     className="custom-file-input"
                     accept="application/pdf"
+
                     onChange={(e) => setFile(e.target.files[0])}
                   />
                 </div>
                 <div className="imgsection">
                   <div className="custom-file overflow-hiddenmb-5">
-                    <div>Chooes a PDF File</div>
-                    <input type="file" id="img" name="img" accept="image/*" onChange={convetToBase64} />
+                    <div>Chooes Image File</div>
+                    <input type="file" id="img" name={image} accept="image/*" onChange={convetToBase64} />
                     <div className="imgcondition">
                       ( Chooes a image and size must be 150x150 pixel )
                     </div>
                   </div>
 
-                  <img
+                  {(image === "") ? "":<img
                     className="themes"
                     src={image}
                     alt="image"
-                  ></img>
+                  />}
                 </div>
               </div>
               <br></br>

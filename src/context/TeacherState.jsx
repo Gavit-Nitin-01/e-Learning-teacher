@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, version } from 'react'
 import TeacherContext from './teacherContext'
 import { toast } from 'react-toastify';
 import { pdfjs } from 'react-pdf';
@@ -41,27 +41,9 @@ export default function TeacherState(props) {
 
 
     // add notes 
-    const addNotes = async (title, desc, file, image) => {
-        const formData = new FormData();
-        formData.append("title", title);
-        formData.append("description", desc);
-        formData.append("file", file);
-        formData.append("image", image);
-
-        const result = await axios.post(
-            `${host}/api/notes/addnotes`,
-            formData,
-            {
-                headers: {
-                    "Content-Type": "multipart/form-data",
-                    "Access-Control-Allow-Origin": "*",
-                    "auth-token": localStorage.getItem('token'),
-                },
-            }
-        );
-
-        if (!result) {
-            toast.error('File Not Uploaded', {
+    const addNotes = async (title, desc, filename, image) => {
+        if (title === "" || desc === "" || 10 >= desc.length || filename === "" || image === "") {
+            toast.error('something wrrong', {
                 position: "top-right",
                 autoClose: 2000,
                 hideProgressBar: false,
@@ -69,36 +51,54 @@ export default function TeacherState(props) {
                 theme: "colored",
             });
         } else {
-            toast.success('Note Uploaded Successfuly', {
-                position: "top-right",
-                autoClose: 2000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                theme: "colored",
-            });
-        }
-        // const note = await result.json();
-        // setNotes(notes.concat(note));
+            const formData = new FormData();
+            formData.append("title", title);
+            formData.append("description", desc);
+            formData.append("file", filename);
+            formData.append("image", image);
 
+            const result = await axios.post(
+                `${host}/api/notes/addnotes`,
+                formData,
+                {
+                    headers: {
+                        "Content-Type": "multipart/form-data",
+                        "Access-Control-Allow-Origin": "*",
+                        "auth-token": localStorage.getItem('token'),
+                    },
+                }
+            );
+
+            if (!result) {
+                toast.error('File Not Uploaded', {
+                    position: "top-right",
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    theme: "colored",
+                });
+            } else {
+                toast.success('Note Uploaded Successfuly', {
+                    position: "top-right",
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    theme: "colored",
+                });
+            }
+            // const note = await result.json();
+            // setNotes(notes.concat(note));
+
+        }
     }
 
-    
+
+
+
     //Add course
     const addCourse = async (name, description, image) => {
-        const response = await fetch(
-            `${host}/api/course/createcourse`,
-            {
-                method:"post",
-                headers: {
-                    "Content-Type": "application/json",
-                    "auth-token": localStorage.getItem('token'),
-                },
-                body:JSON.stringify({name, description, image})
-            }
-        );
-        const newcourse = await response.json();
-        if (!course) {
-            toast.error('Something wrrong', {
+        if (name === "" || description === "" || 10 >= description.length || image === "") {
+            toast.error('Something Wrrong', {
                 position: "top-right",
                 autoClose: 2000,
                 hideProgressBar: false,
@@ -106,14 +106,37 @@ export default function TeacherState(props) {
                 theme: "colored",
             });
         } else {
-            toast.success('Course Add Successfuly', {
-                position: "top-right",
-                autoClose: 2000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                theme: "colored",
-            });
+            const response = await fetch(
+                `${host}/api/course/createcourse`,
+                {
+                    method: "post",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "auth-token": localStorage.getItem('token'),
+                    },
+                    body: JSON.stringify({ name, description, image })
+                }
+            );
+            const newcourse = await response.json();
+            if (!course) {
+                toast.error('Api not responed', {
+                    position: "top-right",
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    theme: "colored",
+                });
+            } else {
+                toast.success('Course Add Successfuly', {
+                    position: "top-right",
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    theme: "colored",
+                });
+            }
         }
+
     }
 
     // Get all Notes for teacher own
@@ -132,7 +155,7 @@ export default function TeacherState(props) {
     }
 
 
-    const [courses,setCourses] = useState([])
+    const [courses, setCourses] = useState([])
     // Get all Course for teacher own
     const getCourse = async () => {
         // API Call 
@@ -144,8 +167,8 @@ export default function TeacherState(props) {
             }
         });
         const newCourse = await response.json()
-        setCourse(oldCourse=>[...oldCourse,newCourse])
-        setCourse(course.concat(newCourse))
+        setCourses(oldCourse => [...oldCourse, newCourse])
+        setCourses(course.concat(newCourse))
         setCourse(newCourse)
         setTotalCourse(newCourse.length);
     }
@@ -153,46 +176,29 @@ export default function TeacherState(props) {
 
 
     // Upload Course Video 
-    const uploadVideo = async (title, desc,courseid) => {
-        // const formData = new FormData();
-        // formData.append("title", title);
-        // formData.append("description", desc);
-        console.log(courseid)
+    // const uploadVideo = async (title, desc, videos) => {
+    //    let formdata = new FormData();
+    //    for(let key in videos) {
+    //     formdata.append("videos",videos[key]);
+    //    }
 
-        const result = await fetch(
-            `${host}/api/course/addvideo`,
-            {
-                method:"post",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body:JSON.stringify({title:title, description:desc,course:courseid})
-            }
-        );
+    //    formdata.append("title",title);
+    //    formdata.append("description",desc);
 
-        if (!result) {
-            toast.error('File Not Uploaded', {
-                position: "top-right",
-                autoClose: 2000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                theme: "colored",
-            });
-        } else {
-            toast.success('Note Uploaded Successfuly', {
-                position: "top-right",
-                autoClose: 2000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                theme: "colored",
-            });
-        }
-        // const note = await result.json();
-        // setNotes(notes.concat(note));
+    //    axios.post(`${host}/api/course/addvideo`,formdata)
+    //    .then((success) => {
+    //     console.log(success)
+    //     alert("submitted successfully")
+    //    }).catch((error) =>{
+    //     console.log(error);
+    //     alert("Error happend!")
+    //    })
 
-    }
+    // }
+
+
     return (
-        <TeacherContext.Provider value={{ addNotes, data, notes, totalNotes,courses, course, totalCourse, addCourse ,uploadVideo}}>
+        <TeacherContext.Provider value={{ addNotes, data, notes, totalNotes, courses, course, totalCourse, addCourse }}>
             {props.children}
         </TeacherContext.Provider>
     )

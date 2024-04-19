@@ -9,7 +9,7 @@ export default function AddTutorial() {
     const [name, setName] = useState("");
     const [description, setDesc] = useState("");
     const [image, setImage] = useState("");
-    
+
 
     const convetToBase64 = (e) => {
         let render = new FileReader();
@@ -34,6 +34,7 @@ export default function AddTutorial() {
         addCourse(name, description, image);
         setName("");
         setDesc("");
+        setImage("")
     };
 
 
@@ -90,29 +91,28 @@ export default function AddTutorial() {
                                             </div>
                                         </div>
 
-                                        <img
+                                        {(image === "") ? "" : <img
                                             className="themes"
                                             src={image}
-
                                             alt="image"
-                                        ></img>
+                                        />}
                                     </div>
                                 </div>
                                 <br></br>
 
 
                                 <button className='uploadbtn' style={{
-                                    background: "#1c2785", color: "white"  ,float:"inline-end",
+                                    background: "#1c2785", color: "white", float: "inline-end",
                                     height: "40px"
                                 }} type='submit'>
-                                Add
-                            </button>
+                                    Add
+                                </button>
 
-                        </form>
+                            </form>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div >
+            </div >
         </>
     )
 }
